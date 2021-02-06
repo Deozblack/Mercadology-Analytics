@@ -6,13 +6,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // Create Task
 app.post('/create',(req, res) => {
-  res.sendFile('/src/app/components/login/login.component.html')
+
   console.log(req,body);
   res.send('Recibido');
 
 })
 // STATIC Files
 
-//app.use(express.static(path.join(__dirname + '/src/app/components/login')));
+app.use(express.static(path.join(__dirname + '/src/app/components/login')));
 
 module.exports = app;
