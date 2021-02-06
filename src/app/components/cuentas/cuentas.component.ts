@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CuentasService } from "../../servicio.service";
 
 @Component({
   selector: 'app-cuentas',
