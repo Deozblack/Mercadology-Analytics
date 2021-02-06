@@ -31,6 +31,7 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "forms-steps": "^1.0.4",
+    "mat-sidenav-menu": "^0.10.1",
     "mongoose": "^5.11.14",
     "morgan": "^1.10.0",
     "rxjs": "^6.6.3",

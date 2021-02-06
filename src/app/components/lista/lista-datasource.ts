@@ -4,9 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { Cuenta } from 'src/app/cuenta';
-import { CuentasService } from 'src/app/servicio.service';
-import { MatDialog } from '@angular/material/dialog';
-import {MDCSnackbar} from '@material/snackbar';
+
 // TODO: Replace this with your own data model type
 export interface ListaItem {
   nombre: string;
@@ -30,6 +28,7 @@ export class ListaDataSource extends DataSource<ListaItem> {
 
   constructor() {
     super();
+
   }
 
   /**
@@ -70,6 +69,7 @@ export class ListaDataSource extends DataSource<ListaItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
+
   private getSortedData(data: ListaItem[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
