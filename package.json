@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/core": "^11.1.2",
     "@angular/animations": "^11.1.2",
     "@angular/cdk": "^11.1.2",
     "@angular/common": "~10.2.0",
@@ -31,7 +32,9 @@
     "forms-steps": "^1.0.4",
     "mongoose": "^5.11.14",
     "morgan": "^1.10.0",
-    "rxjs": "~6.6.0",
+    "rxjs": "^6.6.3",
+    "rxjs-observable": "0.0.7",
+    "snyk": "^1.446.0",
     "tslib": "^2.1.0",
     "webpack-dev-server": "^3.11.2",
     "zone.js": "~0.10.2"

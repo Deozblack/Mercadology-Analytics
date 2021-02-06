@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DialogoComponent } from './dialogo.component';
 
 describe('DialogoComponent', () => {
