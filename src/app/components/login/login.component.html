@@ -1,23 +1,25 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="col-login">
+            <form (ngSubmit)="Login(formLogin)" #formLogin="ngForm" class="col-login">
                 <div class="cont-img">
                     <img class="img-login" src="../../../assets/imagenes/login/logo-mercadology-blanco.png" alt="">
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Correo electrónico">
+                    <span *ngIf="formLogin.submitted && formLogin.controls['correo'].errors" class="texto-rojo">Ingrese un correo válido</span>
+                    <input type="email" name="correo" [(ngModel)]="usuario.correo" class="form-control" id="formGroupExampleInput" placeholder="Correo electrónico" required email>
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Contraseña">
+                    <span *ngIf="formLogin.submitted && formLogin.controls['password'].errors" class="texto-rojo">El password debe tener mas de 6 carácteres.</span>
+                    <input type="password" name="password" [(ngModel)]="usuario.password" class="form-control" id="formGroupExampleInput2" placeholder="Contraseña" required minlength="6">
                 </div>
                 <div class="mb-3 cont-restablecer">
                     <a href="#" class="text-restablecer">¿Restablecer contraseña?</a>
                 </div>
                 <div class="mb-3 d-grid">
-                    <a href="" class="btn btn-block gris text-white btn-dark">Entrar</a>
+                    <button class="btn btn-block gris text-white btn-dark">Entrar</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

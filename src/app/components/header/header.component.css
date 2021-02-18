@@ -1,0 +1,24 @@
+.navHome {
+    background: #1c1c1c;
+    border-bottom: .2px solid #000;
+}
+
+.logo {
+    float: left;
+    width: 200px;
+}
+
+.contImg {
+    width: 150px;
+    margin: 0;
+    margin-left: 30px;
+}
+
+.a-header {
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+
+.a-header:hover {
+    border-bottom: 1px solid #fff;
+}

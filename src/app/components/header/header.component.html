@@ -1,1 +1,24 @@
-<p>header works!</p>
+<ul class="nav  p-2 navHome">
+
+    <div class="col-3">
+        <a [routerLink]="['/home']" routerLinkActive="router-link-active"><img class="contImg" src="../../../assets/imagenes/login/logo-mercadology-blanco.png" alt="Logo mercadology"></a>
+    </div>
+
+    <div class="col-9 d-flex justify-content-end align-items-center pr-3">
+        <li class="nav-item px-2">
+            <a class="nav-link text-white disabled a-header" aria-current="page" href="#">Gestión de usuarios</a>
+        </li>
+        <li class="nav-item px-2">
+            <a class="nav-link text-white disabled a-header" href="#">SEO</a>
+        </li>
+        <li class="nav-item px-2">
+            <a [routerLink]="['/cuentas']" routerLinkActive="router-link-active" class="nav-link text-white a-header" href="#">Información de cuentas</a>
+        </li>
+        <li class="nav-item px-2">
+            <a class="nav-link text-white a-header disabled" href="#" tabindex="-1">Mi cuenta</a>
+        </li>
+        <li class="nav-item px-2">
+            <a (click)="salir()" class="nav-link text-white a-header" href="#" tabindex="-1">Salir</a>
+        </li>
+    </div>
+</ul>
