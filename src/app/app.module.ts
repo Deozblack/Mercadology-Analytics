@@ -7,8 +7,9 @@ import { CuentasComponent } from './components/cuentas/cuentas.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './components/home/home.component';
 import { GeneradorReportesComponent } from './components/generador-reportes/generador-reportes.component';
+import { HomeComponent } from './components/home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -17,8 +18,8 @@ import { GeneradorReportesComponent } from './components/generador-reportes/gene
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
-    GeneradorReportesComponent
+    GeneradorReportesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

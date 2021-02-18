@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-generador-reportes',
   templateUrl: './generador-reportes.component.html',

@@ -1,115 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Hello Analytics Reporting API V4</title>
-  <meta name="google-signin-client_id" content="987910429607-i6qs3kfss7d9bg1trth4o6rtii014t08.apps.googleusercontent.com">
-  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
 </head>
 <body>
 
-<h1>Hello Analytics Reporting API V4</h1>
+  <h1>Hello Analytics Reporting API V4</h1>
 
-<!-- The Sign-in button. This will run `queryReports()` on success. -->
-<p class="g-signin2" data-onsuccess="queryReports"></p>
+  <script>
+    (function(w,d,s,g,js,fs){
+      g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+      js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+      js.src='https://apis.google.com/js/platform.js';
+      fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+    }(window,document,'script'));
+    </script>
 
-<!-- The API response will be printed here. -->
-<!-- startDate: '7daysAgo',          endDate: 'today'  -->
-
-<div  id="query-output"></div>
-
-
+<div id="embed-api-auth-container"></div>
+<div id="chart-container"></div>
+<div id="view-selector-container"></div>
 <script>
-  // Replace with your view ID.
-  var VIEW_ID = '230218277';
 
-  // Query the API and print the results to the page.
-  function queryReports() {
-    gapi.client.request({
-      path: '/v4/reports:batchGet',
-      root: 'https://analyticsreporting.googleapis.com/',
-      method: 'POST',
-      body: {
-        reportRequests: [
-          {
-            viewId: VIEW_ID,
-            dateRanges: [
-              {
-                startDate: "2021-01-01",
-                endDate: "2021-01-31"
-              }
-            ],
-            metrics: [
-              {
-                expression:'ga:users',
-		            alias: 'Usuarios'
-              },
-	            {
-		            expression:'ga:organicSearches',
-		            alias: "Tráfico orgánico"
-	            }
-            ],
-            dimensions: [
-              {
-                name: "ga:date"   /*"ga:fullReferrer"*/
-              }
-      	    ]
-          }
-        ]
+  gapi.analytics.ready(function() {
+  
+    /**
+     * Authorize the user immediately if the user has already granted access.
+     * If no access has been created, render an authorize button inside the
+     * element with the ID "embed-api-auth-container".
+     */
+    gapi.analytics.auth.authorize({
+      container: 'embed-api-auth-container',
+      clientid: '987910429607-i6qs3kfss7d9bg1trth4o6rtii014t08.apps.googleusercontent.com'
+    });
+  
+  
+    /**
+     * Create a new ViewSelector instance to be rendered inside of an
+     * element with the id "view-selector-container".
+     */
+    var viewSelector = new gapi.analytics.ViewSelector({
+      container: 'view-selector-container'
+    });
+  
+    // Render the view selector to the page.
+    viewSelector.execute();
+  
+  
+    /**
+     * Create a new DataChart instance with the given query parameters
+     * and Google chart options. It will be rendered inside an element
+     * with the id "chart-container".
+     */
+    var dataChart = new gapi.analytics.googleCharts.DataChart({
+      query: {
+        metrics: 'ga:sessions',
+        dimensions: 'ga:date',
+        'start-date': '30daysAgo',
+        'end-date': 'yesterday'
+      },
+      chart: {
+        container: 'chart-container',
+        type: 'LINE',
+        options: {
+          width: '100%'
+        }
       }
-    }).then(displayResults, console.error.bind(console));
-  }
+    });
+  
+  
+    /**
+     * Render the dataChart on the page whenever a new view is selected.
+     */
+    viewSelector.on('change', function(ids) {
+      dataChart.set({query: {ids: ids}}).execute();
+    });
+  
+  });
+  </script>
 
-  function displayResults(response) {
-    total = response.result.reports[0].data.rowCount;
-    /*46+11+3+2*/
 
-    users = response.result.reports[0].columnHeader.metricHeader.metricHeaderEntries[0].name;
-    traficOrganic = response.result.reports[0].columnHeader.metricHeader.metricHeaderEntries[1].name;
-
-    usersTotal = response.result.reports[0].data.totals[0].values[0];
-    traficOrganicTotal = response.result.reports[0].data.totals[0].values[1];
-
-    var fecha = new Array();
-    var usersV = new Array();
-    var traficOrganicV = new Array();
-
-    for(let i=0; i < total; i++){
-        fecha[i] = response.result.reports[0].data.rows[i].dimensions[0];
-        usersV[i] = response.result.reports[0].data.rows[i].metrics[0].values[0];
-        traficOrganicV[i] = response.result.reports[0].data.rows[i].metrics[0].values[1];
-    }
-
-    for(let i=0; i < total; i++){
-      console.log(fecha[i]);
-    }
-
-      document.getElementById('query-output').innerHTML = users + " totales: " + usersTotal + "<br>" 
-      + traficOrganic + ": " + traficOrganicTotal + ' usuarios<br>' +
-      '<table style="width:100%;justify-content: center; align-items: center; text-align: center;">' + 
-            '<thead>' + 
-                    '<tr>' +
-                          '<th>' + users + '</th>' +
-                          '<th>' + traficOrganic + '</th>' +
-                    '</tr>'+
-            '</thead>' +
-            '<tbody>' +
-              '<tr>' + '<td>' + fecha + '</td>' + '</tr>' +
-              '<tr>' + '<td>' + usersV + '</td>' + '</tr>' +
-              '<tr>' + '<td>' + traficOrganicV + '</td>' + '</tr>' +
-              
-            '</tbody>'
-              ; 
-                
-    var formattedJson = JSON.stringify(response.result, null, 2); /*Seria facil manipular, pero pues no se como trabajar con una cadena Json convertid*/
-    console.log(formattedJson);
-
-    console.log(response); /*Para checar los mejor el lugar de los arrays*/
-  }
-</script>
-
-<!-- Load the JavaScript API client and Sign-in library. -->
-<script src="https://apis.google.com/js/client:platform.js"></script>
 
 </body>
 </html>
