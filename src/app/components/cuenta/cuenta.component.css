@@ -1,0 +1,18 @@
+
+.wi{
+    width: 80%;
+    margin: auto;
+}
+label{
+    color: #ccc;
+}
+input[type="text"],input[type="date"],input[type="submit"]{
+    width: 30%;
+    
+}
+.flo-rig{
+    float: right;
+}
+.flo-lef{
+    float: left;
+}
