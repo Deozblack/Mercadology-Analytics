@@ -15,8 +15,10 @@ export class MostrarComponent implements OnInit {
 
   constructor( private AuthService: AuthService, 
     private route: ActivatedRoute  ) { }
+    cargando = false;
 
   ngOnInit(): void {
+    this.cargando = true;
 
     const id = this.route.snapshot.paramMap.get('ids');
 
@@ -26,6 +28,8 @@ export class MostrarComponent implements OnInit {
         .subscribe( (resp: ClienteModel) => {
           this.cliente = resp;
           this.cliente.ids = id;
+        this.cargando = false;
+
         });
 
     }
