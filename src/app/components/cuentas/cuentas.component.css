@@ -4,3 +4,13 @@
     width: 85%;
     overflow-y: hidden;
 }
+.green{
+    color: lawngreen;
+}
+.red{
+    color: red;
+}
+.der{
+    margin-left: 8%;
+    margin-top: 30px;
+}

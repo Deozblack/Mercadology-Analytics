@@ -1,0 +1,212 @@
+
+    <button class="btn btn-close"
+            routerLink="/cuentas">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+
+    <form (ngSubmit)="guardar( f )"
+          #f="ngForm">
+
+      <div class="form-group">
+        <label>ID</label>
+        <input type="text"
+               class="form-control"
+               placeholder="ID"
+               [(ngModel)]="cliente.ids"
+               name="ids"
+               disabled="disabled">
+        <small class="form-text text-muted">Este campo es autogenerado</small>
+      </div>
+
+
+      <div class="form-group">
+          <label>Nombre</label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="Nombre de la empresa"
+                 [(ngModel)]="cliente.nomcli"
+                 name="nomcli"
+                 required>
+      </div>
+
+      <div class="form-group">
+          <label>Dominio</label>
+          <input type="text"
+                 class="form-control"
+                 [(ngModel)]="cliente.domcli"
+                 name="domcli"
+                 placeholder="Nombre del dominio">
+      </div>
+      <!----aqui comienzan los campos-->
+      <div class="form-group">
+        <label>Direccion IP</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.dirip"
+               name="dirip"
+               placeholder="Direccion del servidor">
+    </div>
+    <div class="form-group">
+        <label>Base de datos: Nombre</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.dbnam"
+               name="dbnam"
+               placeholder="Nombre de la base de datos">
+    </div>
+    <div class="form-group">
+        <label>Base de datos: Usuario</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.dbuse"
+               name="dbuse"
+               placeholder="Usuario de la base de datos">
+    </div>
+    <div class="form-group">
+        <label>Base de datos: Contraseña</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.dbpas"
+               name="dbpas"
+               placeholder="Contraseña de la base de datos">
+    </div>
+    <div class="form-group">
+        <label>FTP: Usuario</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.ftpuse"
+               name="ftpuse"
+               placeholder="FTP Usuario">
+    </div>
+    <div class="form-group">
+        <label>FTP: Contraseña</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.ftppas"
+               name="ftppas"
+               placeholder="FTP Contraseña">
+    </div>
+    <div class="form-group">
+        <label>Hospedaje</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.hosnom"
+               name="hosubi"
+               placeholder="Hospedaje.com">
+    </div>
+    <div class="form-group">
+        <label>Hospedaje: Usuario</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.hosuse"
+               name="hosuse"
+               placeholder="Usuario del hospedaje">
+    </div>
+    <div class="form-group">
+        <label>Hospedaje: Contraseña</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.hospas"
+               name="hospas"
+               placeholder="Contraseña del usuario">
+    </div>
+    <div class="form-group">
+        <label>Hospedaje: Vencimiento</label>
+        <input type="date"
+               class="form-control"
+               [(ngModel)]="cliente.hosven"
+               name="hosven"
+               >
+    </div>
+    <div class="form-group">
+        <label>Dominio: Ubicacion</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.domubi"
+               name="domubi"
+               placeholder="Ubicacion del dominio">
+    </div>
+    <div class="form-group">
+        <label>Dominio: Usuario</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.domuse"
+               name="domuse"
+               placeholder="Usuario del dominio">
+    </div>
+    <div class="form-group">
+        <label>Dominio: Contraseña</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.dompas"
+               name="dompas"
+               placeholder="Contraseña del dominio">
+    </div>
+    <div class="form-group">
+        <label>Cuenta: Correo</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.cuecor"
+               name="cuecor"
+               placeholder="Correo gmail">
+    </div>
+    <div class="form-group">
+        <label>Cuenta: Contraseña</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.cuepas"
+               name="cuepas"
+               placeholder="Contraseña del correo">
+    </div>
+    <div class="form-group">
+        <label>Vencimiento del SSL</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="cliente.venssl"
+               name="dompas"
+               placeholder="vencimiento SSL">
+    </div>
+    <!----aqui terminan -->
+
+      <div class="form-group">
+        <label>Estado</label>
+        <br>
+
+        <button *ngIf="cliente.estado" 
+                (click)="cliente.estado = false"
+                class="btn btn-outline-success w-50" type="button">
+          <i class="fa fa-smile-wink"></i>
+          Activo
+        </button>
+
+        <button *ngIf="!cliente.estado"
+                (click)="cliente.estado = true"
+                class="btn btn-outline-danger w-50" type="button">
+            <i class="fa fa-dizzy"></i>
+            Inactivo
+        </button>
+
+      </div>
+
+
+
+      <hr>
+      <div class="form-group text-center">
+        <button type="submit"
+                class="btn btn-primary w-25">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+      </div>
+
+
+    </form>
+
+
+  </div>
+</div>
