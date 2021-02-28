@@ -1,0 +1,9 @@
+.container{
+    color: white;
+    width: min(90%, 1200px);
+}
+
+form{
+    margin: 0 auto;
+    color: white;
+}

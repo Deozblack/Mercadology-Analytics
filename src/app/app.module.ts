@@ -10,7 +10,13 @@ import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GeneradorReportesComponent } from './components/generador-reportes/generador-reportes.component';
+import { RegistroComponent } from './components/usuarios/registro/registro.component';
+import { ModificarComponent } from './components/usuarios/modificar/modificar.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { HomeComponent } from './components/home/home.component';
+
+
+
 
 
 @NgModule({
@@ -21,6 +27,9 @@ import { HomeComponent } from './components/home/home.component';
     HeaderComponent,
     FooterComponent,
     GeneradorReportesComponent,
+    RegistroComponent,
+    UsuariosComponent,
+    ModificarComponent,
     HomeComponent
   ],
   imports: [

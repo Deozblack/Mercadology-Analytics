@@ -1,0 +1,58 @@
+<app-header></app-header>
+<main class="container">
+    <div class="row mt-4"> 
+    <h1 class="col-md-10 text-white ">Usuarios</h1>
+        <div class="col-md-2 ">
+            <button [routerLink]="['/registro']" routerLinkActive="router-link-active" class="btn btn-primary"> Agregar </button>
+        </div>
+    </div>
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Puesto</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.apellido }}</td>
+                <td>{{ usuario.correo }}</td> 
+                <td>{{ usuario.rol }}</td>
+                <td>{{ usuario.puesto }}</td>
+                <td>{{ usuario.depto }}</td>
+                <td class="">
+                    <button [routerLink]="['/modificar', usuario.id]" routerLinkActive="router-link-active" class="btn btn-warning"> Modificar </button>
+                </td>
+                <td class="">
+                    <button class="btn btn-danger" (click)="eliminarUsuario( usuario, i )">Eliminar</button>
+<!--                <div class="modal fade" id="exampleModalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Eliminar usuario</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Esta seguro de eliminar el usuario?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" >Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>

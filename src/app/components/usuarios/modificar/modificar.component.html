@@ -1,0 +1,57 @@
+<app-header></app-header>
+<main class="container">
+<div class="row">
+  <h1 class="col-md-4" >Modificar</h1>
+</div>
+  <form (ngSubmit)="registrarSubmit( formR )"  #formR="ngForm">
+    
+    <div class="form-group container" >
+
+
+    <div class="row mt-5">
+      <div class="col-md-6 mb-3">
+        <label for="formNombre" class="mb-2">  Nombre</label>
+        <input type="text" class="form-control" name="nombre" id="formNombre" placeholder="Nombre" required [(ngModel)]="registro.nombre" minlength="2">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="formApellido" class="mb-2">Apellido(s)</label>
+        <input type="text" class="form-control" name="apellido" id="formApellido" placeholder="Apellido(s)" required [(ngModel)]="registro.apellido" minlength="2">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label for="formRol" class="mb-2"> Rol</label>
+        <select class="form-control" id="formRol" name="rol" [(ngModel)]="registro.rol">
+          <option disabled selected value="">Seleccione</option>
+          <option>Administrador</option>
+          <option>Editor</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label for="formPuesto" class="mb-2"> Puesto</label>
+        <input type="text" class="form-control" name="puesto" id="formPuesto" placeholder="Puesto" required [(ngModel)]="registro.puesto">
+      </div>
+
+      <div class="col-md-4">
+        <label for="formDepto" class="mb-2"> Departamento</label>
+        <input type="text" class="form-control" name="depto" id="formDepto" placeholder="Departamento" required [(ngModel)]="registro.depto">
+      </div>
+
+    </div>
+
+    <div class="form-group mt-4">
+        <input type="submit" class="btn btn-primary w-25" value="Registrar">
+    </div>
+
+    <div class="col-md-4" style="display: none;" >
+      <label for="formId" class="mb-2"> Id</label>
+      <input type="text" class="form-control" name="id" id="formId" placeholder="Id" required [(ngModel)]="registro.id">
+    </div>
+
+  </div>
+
+  </form>
+
+</main>

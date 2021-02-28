@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     Swal.showLoading();
     
     this.auth.Login(this.usuario).subscribe(resp => {
-      
       console.log(resp);
       Swal.close();
       this.router.navigateByUrl('/home');
