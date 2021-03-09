@@ -13,18 +13,18 @@ export class UsuariosComponent implements OnInit {
 
   usuarios: RegistroModel[] = [];
 
-
   constructor( private usuarioService: AuthService,
                 private route: ActivatedRoute){ }
 
   ngOnInit(): void {
-
+    
     this.usuarioService.getUsuarios()
     .subscribe( resp =>this.usuarios = resp );
+    
   }
 
   eliminarUsuario( usuario: RegistroModel, i: number){
-    
+
     Swal.fire({
       title: '¿Esta seguro?',
       text: `¿Esta seguro que desea borrar a ${usuario.nombre}?`,
@@ -35,11 +35,15 @@ export class UsuariosComponent implements OnInit {
 
       if( resp.value ){
         this.usuarios.splice(i,1);
-        this.usuarioService.eliminarUsuario( usuario.id ).subscribe();
-      }
+        
+    //    console.log(localStorage.getItem('idToken'));
+        /**Elimina el usuario actual mediante su token**/
+        //this.usuarioService.eliminarUsuarioAuth( usuario.idTok ).subscribe();
 
+        this.usuarioService.eliminarUsuario( usuario.id ).subscribe();        
+      }
     })
-    
   }
 
+  
 }

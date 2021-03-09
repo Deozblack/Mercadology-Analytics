@@ -1,7 +1,8 @@
-import { Identifiers } from "@angular/compiler";
+
 
 export class RegistroModel{
     id: string;
+    idTok?: string;
     nombre: string; 
     apellido: string;
     puesto?: string;
@@ -9,5 +10,8 @@ export class RegistroModel{
     depto?: string;
     correo?: string; 
     password?: string;
+    telefono?: string;
+    celular?: string;
+    foto?: File;
 }
 

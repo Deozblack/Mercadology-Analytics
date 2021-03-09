@@ -1,0 +1,11 @@
+label{
+    color: white;
+}
+
+.form-group{
+    margin-bottom: 5px;
+}
+
+.container{
+    width: min(900px, 90%);
+}

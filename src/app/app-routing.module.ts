@@ -8,6 +8,7 @@ import { GeneradorReportesComponent } from './components/generador-reportes/gene
 import { RegistroComponent } from './components/usuarios/registro/registro.component';
 import { ModificarComponent } from './components/usuarios/modificar/modificar.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { PerfilComponent } from './components/usuarios/perfil/perfil.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -15,9 +16,10 @@ const routes: Routes = [
   {path: 'home' , component: HomeComponent,canActivate: [AuthGuard]},
   {path: 'cuentas', component: CuentasComponent,canActivate: [AuthGuard]},
   {path: 'generadorReportes', component: GeneradorReportesComponent, canActivate: [AuthGuard]},
-  {path: 'registro', component: RegistroComponent, canActivate: [AuthGuard]},
+  {path: 'registro', component: RegistroComponent},
   {path: 'modificar/:id', component: ModificarComponent, canActivate: [AuthGuard]},
   {path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard]},
+  {path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard]},
   {path: 'login' , component: LoginComponent, canActivate: [AuthGuard]},
   {path: '**' , redirectTo: 'login'}
 ];

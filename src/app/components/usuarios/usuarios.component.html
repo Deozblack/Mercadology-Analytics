@@ -29,6 +29,7 @@
                 <td>{{ usuario.rol }}</td>
                 <td>{{ usuario.puesto }}</td>
                 <td>{{ usuario.depto }}</td>
+                <td style="display: none;" >{{ usuario.idTok }}</td>
                 <td class="">
                     <button [routerLink]="['/modificar', usuario.id]" routerLinkActive="router-link-active" class="btn btn-warning"> Modificar </button>
                 </td>

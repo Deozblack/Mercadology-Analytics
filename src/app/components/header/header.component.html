@@ -15,7 +15,7 @@
             <a [routerLink]="['/cuentas']" routerLinkActive="router-link-active" class="nav-link text-white a-header" href="#">Información de cuentas</a>
         </li>
         <li class="nav-item px-2">
-            <a class="nav-link text-white a-header disabled" href="#" tabindex="-1">Mi cuenta</a>
+            <a [routerLink]="['/perfil']" routerLinkActive="router-link-active" class="nav-link text-white a-header" href="#" tabindex="-1">Mi cuenta</a>
         </li>
         <li class="nav-item px-2">
             <a (click)="salir()" class="nav-link text-white a-header" href="#" tabindex="-1">Salir</a>

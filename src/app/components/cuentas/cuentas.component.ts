@@ -11,22 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CuentasComponent implements OnInit {
 
-public tokenUsu: string;
-
   constructor( public auth: AuthService) { }
 
-  usuario: RegistroModel = {
-    id: '',
-    nombre: '',
-    apellido: '',
-    correo: ''
-  }
-
   ngOnInit(): void {
-  
-    this.tokenUsu = localStorage.getItem('email');
-    console.log(this.tokenUsu);
 
+
+    
   }
 
   

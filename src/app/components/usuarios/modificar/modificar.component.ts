@@ -13,26 +13,27 @@ import Swal from 'sweetalert2';
 export class ModificarComponent implements OnInit {
 
   registro: RegistroModel; //Este es para modificar cuando ya tengo los usuarios
-
+  idToken: string;
 
   constructor(private auth: AuthService,
     private route: ActivatedRoute,
-                private router: Router) { }
+                private router: Router) { 
+                  this.idToken = localStorage.getItem('token')
+                  console.log(this.idToken);
+                }
 
   ngOnInit(): void {
 
     const id = this.route.snapshot.paramMap.get('id');
-    
+
       this.auth.getUsuario( id )
         .subscribe( (resp: RegistroModel) => {
           this.registro = resp;
           this.registro.id = id;
         } )
-  
-
   }
 
-  registrarSubmit( form: NgForm){
+  modificarSubmit( form: NgForm){
 
     if( form.invalid ){ return; }
 
@@ -43,6 +44,7 @@ export class ModificarComponent implements OnInit {
     });
     Swal.showLoading();
 
+    this.auth.modificarUsuarioAuth(this.idToken, this.registro).subscribe();
     this.auth.actualizarUsuario(this.registro ).subscribe( resp => {
 
       Swal.close();
@@ -59,15 +61,10 @@ export class ModificarComponent implements OnInit {
           icon: 'error',
           title:'Error al actualizar datos',
           text:err.error.error.message
-  
-        });
-        
+        });        
       }
       );
-
-    
-  }//Termina el submit
-  
+  }//Termina el submit  
 
 
 }

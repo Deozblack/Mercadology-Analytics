@@ -14,18 +14,20 @@ export class RegistroComponent implements OnInit {
 
   registro: RegistroModel; //Registrar
   paso = false;
+  idLocal;
+  idTok
 //  router: any;
 
-  constructor( private auth: AuthService,
+  constructor( private authS: AuthService,
               private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
 
+
     this.registro = new RegistroModel();
 
   }
-
 
   registrarSubmit( form: NgForm){
 
@@ -40,8 +42,17 @@ export class RegistroComponent implements OnInit {
     Swal.showLoading();
 
 
-    this.auth.registrarUsuario(this.registro ).subscribe( resp => {
+    this.authS.registrarUsuario(this.registro ).subscribe( resp => {
 
+      console.log('imorimid nates');
+      this.idLocal = resp['localId'];
+      this.idTok = resp['idToken'];
+      console.log('localID: ' + this.idLocal);
+      console.log('IdToken:' + this.idTok);
+      
+      
+      
+      
 /*      Swal.close();
       Swal.fire(
         'Registrado!',
@@ -52,9 +63,9 @@ export class RegistroComponent implements OnInit {
 
       if(this.paso == true){
         console.log('Entro');
-        this.auth.registrarDatosUsuario(this.registro ).subscribe( resp => {
+        this.authS.registrarDatosUsuario(this.registro, this.idLocal).subscribe( resp => {
 
-          Swal.close();
+          //Swal.close();
           Swal.fire(
             'Registrado!',
             'Bienvenido a Mercadology!',
@@ -62,8 +73,10 @@ export class RegistroComponent implements OnInit {
           )
           this.paso = false;
           this.router.navigateByUrl('/usuarios');
-          console.log(resp);
-          console.log("Despues del resp");
+          console.log('pasoooooooo');
+          
+      //    console.log(resp);
+        //  console.log("Despues del resp");
           },  ( err ) =>{
             console.log( err.error.error.message );
     
@@ -98,6 +111,8 @@ export class RegistroComponent implements OnInit {
     
 
   }
+
+
 
 
 }
