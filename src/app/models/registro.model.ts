@@ -12,6 +12,11 @@ export class RegistroModel{
     password?: string;
     telefono?: string;
     celular?: string;
-    foto?: File;
+    urlPhoto?: string;
+    habilitado?: boolean;
+
+    constructor(){
+        this.habilitado = true;
+    }
 }
 

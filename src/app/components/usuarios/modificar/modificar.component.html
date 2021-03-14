@@ -1,9 +1,12 @@
 <app-header></app-header>
 <main class="container">
-<div class="row">
-  <h1 class="col-md-4" >Modificar</h1>
+<div class="row mt-4">
+  <h1 class="col-md-10" >Modificar</h1>
+  <div class="col-md-2">
+    <button [routerLink]="['/usuarios']" routerLinkActive="router-link-active" class="btn btn-danger col-md-12"> Regresar </button>
+  </div>
 </div>
-  <form (ngSubmit)="modificarSubmit( formR )"  #formR="ngForm">
+  <form (ngSubmit)="modificarSubmit( formR )"  #formR="ngForm" *ngIf='registro'>
     
     <div class="form-group container" >
 
@@ -20,7 +23,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <label for="formRol" class="mb-2"> Rol</label>
         <select class="form-control" id="formRol" name="rol" [(ngModel)]="registro.rol">
           <option hidden value="">Seleccione</option>
@@ -41,7 +44,26 @@
 
     </div>
 
-    <div class="form-group mt-4">
+    <div class="row">
+      <div class="col mb-3">
+        <label class="mb-2">Estado</label>
+        <br>
+
+        <button *ngIf="registro.habilitado" 
+                (click) = "registro.habilitado = false"
+                class="btn btn-outline-success w-50" type="button">
+          Habilitar
+        </button>
+
+        <button *ngIf="!registro.habilitado" 
+                (click) = "registro.habilitado = true"
+                class="btn btn-outline-danger w-50" type="button">
+          Deshabilitar
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group">
         <input type="submit" class="btn btn-primary w-25" value="Modificar">
     </div>
 

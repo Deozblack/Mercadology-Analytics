@@ -16,7 +16,6 @@ export class RegistroComponent implements OnInit {
   paso = false;
   idLocal;
   idTok
-//  router: any;
 
   constructor( private authS: AuthService,
               private route: ActivatedRoute,
@@ -24,9 +23,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     this.registro = new RegistroModel();
-
   }
 
   registrarSubmit( form: NgForm){
@@ -41,31 +38,17 @@ export class RegistroComponent implements OnInit {
     });
     Swal.showLoading();
 
-
     this.authS.registrarUsuario(this.registro ).subscribe( resp => {
 
-      console.log('imorimid nates');
       this.idLocal = resp['localId'];
       this.idTok = resp['idToken'];
-      console.log('localID: ' + this.idLocal);
-      console.log('IdToken:' + this.idTok);
+//      console.log('localID: ' + this.idLocal);
+//      console.log('IdToken:' + this.idTok);
       
-      
-      
-      
-/*      Swal.close();
-      Swal.fire(
-        'Registrado!',
-        'Bienvenido a Mercadology!',
-        'success'
-      )*/
-      //this.router.navigateByUrl('/registroDatos');
-
       if(this.paso == true){
         console.log('Entro');
         this.authS.registrarDatosUsuario(this.registro, this.idLocal).subscribe( resp => {
 
-          //Swal.close();
           Swal.fire(
             'Registrado!',
             'Bienvenido a Mercadology!',
@@ -73,10 +56,7 @@ export class RegistroComponent implements OnInit {
           )
           this.paso = false;
           this.router.navigateByUrl('/usuarios');
-          console.log('pasoooooooo');
           
-      //    console.log(resp);
-        //  console.log("Despues del resp");
           },  ( err ) =>{
             console.log( err.error.error.message );
     
@@ -84,7 +64,6 @@ export class RegistroComponent implements OnInit {
               icon: 'error',
               title:'Error al registrarse',
               text:err.error.error.message
-      
             });
             
           }
@@ -92,8 +71,7 @@ export class RegistroComponent implements OnInit {
 
       }
 
-
-      console.log(resp);
+//      console.log(resp);
       },  ( err ) =>{
         console.log( err.error.error.message );
 
@@ -107,41 +85,6 @@ export class RegistroComponent implements OnInit {
       }
       );
 
-
-    
-
   }
 
-
-
-
 }
-
-/**
- this.auth.registrarDatosUsuario(this.registro ).subscribe( resp => {
-
-          Swal.close();
-          Swal.fire(
-            'Registrado!',
-            'Bienvenido a Mercadologyyyyy!',
-            'success'
-          )
-          this.paso = false;
-          this.router.navigateByUrl('/home');
-          console.log(resp);
-          },  ( err ) =>{
-            console.log( err.error.error.message );
-    
-            Swal.fire({
-              icon: 'error',
-              title:'Error al registrarse',
-              text:err.error.error.message
-      
-            });
-            
-          }
-          );
-
-      }
-
-**/

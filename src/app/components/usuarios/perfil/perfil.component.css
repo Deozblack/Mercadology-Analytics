@@ -9,3 +9,21 @@ label{
 .container{
     width: min(900px, 90%);
 }
+
+.contenedor-foto{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    align-content: center;
+}
+
+.avatar{
+    border-radius: 50%;
+    border: 1px solid white;
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+    max-height: 300px;
+    /*max-width: 200px;*/
+}

@@ -29,6 +29,8 @@ export class ModificarComponent implements OnInit {
       this.auth.getUsuario( id )
         .subscribe( (resp: RegistroModel) => {
           this.registro = resp;
+          console.log(resp);
+          
           this.registro.id = id;
         } )
   }
@@ -43,8 +45,8 @@ export class ModificarComponent implements OnInit {
       text: 'Espere por favor...'
     });
     Swal.showLoading();
-
-    this.auth.modificarUsuarioAuth(this.idToken, this.registro).subscribe();
+    //No se puede actualizar el nombre de usuario en el Auth porque necesto el idToken del usuario y no se tiene el idToken desde otro usuario
+    //this.auth.modificarUsuarioAuth(this.idToken, this.registro).subscribe();
     this.auth.actualizarUsuario(this.registro ).subscribe( resp => {
 
       Swal.close();

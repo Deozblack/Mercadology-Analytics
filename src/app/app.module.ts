@@ -1,7 +1,7 @@
 //import { environment } from './../environments/environment.prod';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,12 +16,6 @@ import { ModificarComponent } from './components/usuarios/modificar/modificar.co
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { PerfilComponent } from './components/usuarios/perfil/perfil.component';
 import { HomeComponent } from './components/home/home.component';
-import { environment } from '../environments/environment';
-
-
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -42,11 +36,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [AngularFireAuth],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

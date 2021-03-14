@@ -37,13 +37,12 @@ export class UsuariosComponent implements OnInit {
         this.usuarios.splice(i,1);
         
     //    console.log(localStorage.getItem('idToken'));
-        /**Elimina el usuario actual mediante su token**/
+        /**Elimina el usuario actual mediante su token, pero no se puede obtener aun eso**/
         //this.usuarioService.eliminarUsuarioAuth( usuario.idTok ).subscribe();
 
         this.usuarioService.eliminarUsuario( usuario.id ).subscribe();        
       }
     })
   }
-
-  
+ 
 }

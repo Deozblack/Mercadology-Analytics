@@ -10,30 +10,33 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
   
-  //Inicio Sision Auth
-  private apikey = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCv_KWilNMN2J_qgwW4hIiYzEU-NyCS_IU';
+  //Inicio Sesion Auth
+  private apikey = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDmvkHWhK6TV-6K3KtF-Zui0D17hCuqzEk';
   public userToken: string;
   // https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY] AIzaSyDmvkHWhK6TV-6K3KtF-Zui0D17hCuqzEk
    
   //Crear usuarios Auth
-  private apiKey2 = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCv_KWilNMN2J_qgwW4hIiYzEU-NyCS_IU`;
+  private apiKey2 = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDmvkHWhK6TV-6K3KtF-Zui0D17hCuqzEk`;
 
   //Borrar usuario Auth
-  private apiKey3 = `https://identitytoolkit.googleapis.com/v1/accounts:delete?key=AIzaSyCv_KWilNMN2J_qgwW4hIiYzEU-NyCS_IU`;
+  private apiKey3 = `https://identitytoolkit.googleapis.com/v1/accounts:delete?key=AIzaSyDmvkHWhK6TV-6K3KtF-Zui0D17hCuqzEk`;
 
   //Obtener datos de usuario Auth
-  private apiKey4 = `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCv_KWilNMN2J_qgwW4hIiYzEU-NyCS_IU`;
+  private apiKey4 = `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyDmvkHWhK6TV-6K3KtF-Zui0D17hCuqzEk`;
 
   //Actualizar usuario Auth
-  private apiKey5 = `https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyCv_KWilNMN2J_qgwW4hIiYzEU-NyCS_IU`;
+  private apiKey5 = `https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDmvkHWhK6TV-6K3KtF-Zui0D17hCuqzEk`;
 
   //Verificar correo
-  private apiKey6 = `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyCv_KWilNMN2J_qgwW4hIiYzEU-NyCS_IU`;
-
+  private apiKey6 = `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDmvkHWhK6TV-6K3KtF-Zui0D17hCuqzEk`;
 
   //RealDataBase
-  private urlDatos = 'https://registro-e4f18-default-rtdb.firebaseio.com/';
+  private urlDatos = 'https://mercadology-analytics-default-rtdb.firebaseio.com';
   //'https://mercadology-analytics-default-rtdb.firebaseio.com';
+
+  //Storage
+  public urlStorage = `https://firebasestorage.googleapis.com/v0/b/mercadology-analytics.appspot.com`;
+  
 
 
   constructor(private http: HttpClient) {
@@ -74,7 +77,6 @@ export class AuthService {
     localStorage.setItem('email', idToken['email']);
     localStorage.setItem('name', idToken['displayName']);
     localStorage.setItem('idUsuario', idToken['localId']);
-    //console.log(idToken);
   }
 
   leerToken (){
@@ -97,8 +99,6 @@ export class AuthService {
       displayName: usuario.nombre + ' ' + usuario.apellido,
       email: usuario.correo,
       password: usuario.password,
-//      puesto: usuario.puesto,
-//      photoUrl: `https://www.google.com/search?q=fotos&rlz=1C1CHBD_esMX810MX810&sxsrf=ALeKk02IMUzTLthrz0GqgUUh4YuJW2TUAg:1614918779816&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjIz9ihqZjvAhUBKKwKHXMaBMYQ_AUoAXoECAcQAw&biw=1296&bih=665#imgrc=clrmJBtqd035WM`,
       returnSecureToken: true
     };
 
@@ -107,9 +107,7 @@ export class AuthService {
       authData
     ).pipe(
       map(( resp: any ) => {
-        console.log(resp['idToken']);
-        console.log('imprimir resp del registro');
-        console.log(resp);
+//        console.log(resp);
         return resp;
       }) 
     );
@@ -119,7 +117,6 @@ export class AuthService {
   registrarDatosUsuario( usuario: RegistroModel, idLocal: string){
   
     let authData = {
-//        idToken: `${idTok}`, 
         nombre: `${usuario.nombre}`,
         apellido: `${usuario.apellido}`,
         telefono: ``,
@@ -127,7 +124,8 @@ export class AuthService {
         correo: `${usuario.correo}`,
         puesto:  `${usuario.puesto}`,
         rol: `${usuario.rol}`,
-        depto: `${usuario.depto}`
+        depto: `${usuario.depto}`,
+        habilitado: `${usuario.habilitado}`
     };
 
     delete usuario.password;
@@ -155,12 +153,10 @@ export class AuthService {
 
   private crearArreglo( usuarioObj: object){
     const usuarios: RegistroModel[] = [];
-    //console.log(usuarioObj);
 
     if( usuarioObj === null ){ return[]; }
 
     Object.keys( usuarioObj ).forEach( key => {
-
       const usuario = usuarioObj[key];
       usuario.id = key;
       usuarios.push (usuario);
@@ -191,42 +187,32 @@ export class AuthService {
 
   /**Elimina el usuario, pero el logueado, es por idToken**/
   eliminarUsuarioAuth( id: string){
-      console.log(id);
     
-    //return idToken;
     return this.http.post(
       `${this.apiKey3}`,
        {'idToken': id}
     ).pipe(
       map(( resp: any ) => {
-        //console.log(resp['idToken']);
-        //console.log('imprimir resp del eliminado');
-        console.log(resp);
+//        console.log(resp);
         return resp;
       }) 
     );
   }
 
   obtenerUsuarioAuth( idToken: string ){
-    console.log('IDTOKEN:' + idToken);
-    //return idToken;
 
     return this.http.post(
       `${this.apiKey4}`,
       {'idToken': idToken}
     ).pipe(
       map(( resp: any ) => {
-        //console.log(resp['idToken']);
-        console.log('imprimir usuario Retornado');
-        console.log(resp);
+//        console.log(resp);
         return resp;
       }) 
     );
   }
 
   modificarUsuarioAuth(idToken:string, usuario: RegistroModel ){
-//    console.log('IDTOKEN:' + idToken);
-//    console.log(usuario.nombre + " " + usuario.apellido);
 
     let nombre = usuario.nombre + ' ' + usuario.apellido;
 
@@ -255,5 +241,14 @@ export class AuthService {
       }) 
     );
   }
-  
+
+  getImagen(){
+    return this.http.get(`${this.urlDatos}/Usuario.json`);
+  }
+
+  uploadImage(file: File){    
+    return this.http.post(`${this.urlStorage}/o/photosProfile%2F${file.name}`,file);
+  }
+
+
 }/**Cierra el export data**/

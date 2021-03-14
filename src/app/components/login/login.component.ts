@@ -1,3 +1,4 @@
+import { RegistroModel } from './../../models/registro.model';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,11 +13,13 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   usuario: UsuarioModel;
+  usuario2: RegistroModel;
   constructor( private auth: AuthService,
                 private router: Router) { }
 
   ngOnInit(): void {
     this.usuario = new UsuarioModel();
+    
   }
   Login (form: NgForm){
     if(form.invalid){return}
@@ -30,8 +33,25 @@ export class LoginComponent implements OnInit {
     
     this.auth.Login(this.usuario).subscribe(resp => {
       console.log(resp);
+
+      const id = resp['localId'];
+      console.log(id);
+      
+      this.auth.getUsuario( id )
+        .subscribe( (resp: RegistroModel) => {
+          console.log(resp['habilitado']);
+          
+            if(!resp['habilitado']){
+              this.router.navigateByUrl('/login');
+              this.auth.Logout();
+              return;
+            }else{
+              this.router.navigateByUrl('/home');
+            }
+        } )
+
       Swal.close();
-      this.router.navigateByUrl('/home');
+      
 
     }, (err) => {
       console.log(err.error.error.message);
