@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RegistroModel } from 'src/app/models/registro.model';
 import { FormControl, FormGroup, NgForm, Validators, ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { $ } from 'protractor';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
