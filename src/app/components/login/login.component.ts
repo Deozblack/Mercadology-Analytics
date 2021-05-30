@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
 
       const id = resp['localId'];
       // console.log(id);
+    
 
       this.auth.getUsuario(id)
         .subscribe((resp: RegistroModel) => {
