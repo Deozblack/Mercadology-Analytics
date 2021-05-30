@@ -161,7 +161,6 @@ export class ModificarComponent implements OnInit {
           // console.log(passwordDesencriptada);
 
           this.auth.iniciarSesionCambiarContrasenaOEmail(this.registro.correo, passwordDesencriptada, correo, "email").subscribe(resp => {
-            // console.log(resp);
             const token = resp['idToken'];
             const id = resp['localid'];
 
