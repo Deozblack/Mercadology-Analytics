@@ -36,7 +36,6 @@ export class RegistroComponent implements OnInit {
     }
 
   ngOnInit(): void {
-
     this.registro = new RegistroModel();
   }
 
@@ -81,7 +80,6 @@ export class RegistroComponent implements OnInit {
 
         }, (err) => {
 
-          // if(err.error)
           // console.log(err.error.error.message);
           const tokenVencido = err.error.error;
 
