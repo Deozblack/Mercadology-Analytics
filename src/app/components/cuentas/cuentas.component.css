@@ -1,6 +1,57 @@
-.tablaCuentas {
+/*.tablaCuentas {
     margin: auto;
     margin-top: 30px;
     width: 85%;
     overflow-y: hidden;
+}*/
+.green{
+    color: lawngreen;
 }
+.red{
+    color: red;
+}
+.der{
+    margin-left: 8%;
+    margin-top: 30px;
+}
+
+@media (max-width: 480px){
+    .encabezado .row{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+table {
+    width: 100%;
+    color: white;
+  }
+  
+  .buscador {
+    font-size: 18px;
+    /* width: 35%; */
+  }
+  .buscador input{
+      /* background-color: transparent; */
+      color: white;
+      border: 0;
+      outline: none;
+      border-bottom: solid 2px white;
+      width: 100%;
+  }  
+
+  @media(min-width: 486px) {
+    td, th {
+        width: 16.66%;
+      }
+  }
+
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+      color: white !important;
+  }
+
+ 
