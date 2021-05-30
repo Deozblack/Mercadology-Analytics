@@ -3,6 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,8 +26,9 @@ import { RegistroComponent } from './components/usuarios/registro/registro.compo
 import { ModificarComponent } from './components/usuarios/modificar/modificar.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { PerfilComponent } from './components/usuarios/perfil/perfil.component';
+import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { HomeComponent } from './components/home/home.component';
-
+import { MostrarComponent } from './components/mostrar/mostrar.component';
 
 @NgModule({
   declarations: [
@@ -30,16 +42,32 @@ import { HomeComponent } from './components/home/home.component';
     UsuariosComponent,
     ModificarComponent,
     HomeComponent,
-    PerfilComponent
+    CuentaComponent,
+    PerfilComponent,
+    MostrarComponent
   ],
   imports: [
+    MatTabsModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    ClipboardModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatSnackBarModule,
+    MatDatepickerModule, 
+    // MatNativeDateModule,
+    MatMomentDateModule
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
