@@ -2,7 +2,6 @@
 
 export class RegistroModel{
     id: string;
-    idTok?: string;
     nombre: string; 
     apellido: string;
     puesto?: string;
@@ -13,7 +12,7 @@ export class RegistroModel{
     telefono?: string;
     celular?: string;
     urlPhoto?: string;
-    habilitado?: boolean;
+    habilitado?: Boolean;
 
     constructor(){
         this.habilitado = true;
