@@ -1,7 +1,36 @@
-th,td{
-    color: white;
+@media (max-width: 480px){
+    .encabezado .row{
+        display: flex;
+        flex-direction: column;
+    }
 }
 
-.modal{
-    color: black;
-}
+ 
+
+table {
+    width: 100%;
+    color: white;
+  }
+  
+  .buscador {
+    font-size: 18px;
+    /* width: 35%; */
+  }
+  .buscador input{
+      /* background-color: transparent; */
+      color: white;
+      border: 0;
+      outline: none;
+      border-bottom: solid 2px white;
+      width: 100%;
+  }  
+
+  @media(min-width: 486px) {
+    td, th {
+        width: 11.11%;
+      }
+  }
+
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+      color: white !important;
+  } 

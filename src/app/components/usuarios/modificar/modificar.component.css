@@ -7,3 +7,26 @@ form{
     margin: 0 auto;
     color: white;
 }
+
+.botones{
+    display: flex;
+    flex-direction: column;
+}
+
+.botones button{
+    width: 100%;
+}
+
+
+@media(min-width: 768px){
+    .botones{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .botones button{
+        width: 30%;
+    }
+
+}

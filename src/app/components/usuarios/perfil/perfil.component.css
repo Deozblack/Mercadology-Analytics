@@ -1,3 +1,13 @@
+img{
+    max-width: 100%; 
+}
+
+.cover {
+    object-fit: cover;
+    /* object-fit: contain; */
+    /* object-fit: scale-down; */
+}
+
 label{
     color: white;
 }
@@ -7,7 +17,7 @@ label{
 }
 
 .container{
-    width: min(900px, 90%);
+    width: min(950px, 95%);
 }
 
 .contenedor-foto{
@@ -24,6 +34,11 @@ label{
     background-size: cover;
     height: 200px;
     width: 200px;
-    max-height: 300px;
+    max-height: 100%;
+    /* max-width: 100%; */
     /*max-width: 200px;*/
 }
+
+:disabled{
+    background-color: white;
+  }
