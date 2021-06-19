@@ -2,7 +2,7 @@
     <div class="row">
         <form (ngSubmit)="Login(formLogin)" #formLogin="ngForm" class="col-login">
             <div class="cont-img">
-                <!--<label for="" style="font-size: 45px; margin-bottom: 40px; margin-top: 20px; font-weight: 700;" class="form-label" >Login</label>-->
+                <!-- <label for="" style="font-size: 45px; margin-bottom: 40px; margin-top: 20px; font-weight: 700;" class="form-label" >Login</label> -->
                 <img class="img-login" src="../../../assets/imagenes/login/logo-mercadology-blanco.png"
                     alt="Mercadology">
             </div>
@@ -55,8 +55,6 @@
                         <div class="modal-body">
                             <form [formGroup]="restablecerContrasenaForm" (ngSubmit)="restablecerContrasena()">
                                 <div class="mb-3">
-                                    <!-- <label for="restablecer-Contrasena" class="col-form-label text-dark">Ingrese su
-                                        correo:</label> -->
                                     <input type="email" class="form-control" id="restablecer-Contrasena" placeholder="Ingrese su correo"
                                         formControlName="restablecerContrasena" required>
                                     <span *ngIf="this.restablecerContrasenaForm.controls['restablecerContrasena'].invalid && this.restablecerContrasenaForm.controls['restablecerContrasena'].touched && this.restablecerContrasenaForm.controls['restablecerContrasena'].errors.email" class="fw-light text-danger" style="font-size: 12px;">Ingrese un formato valido de email</span>
@@ -74,6 +72,5 @@
 
 
         </form>
-
     </div>
 </div>
