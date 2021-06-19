@@ -5,8 +5,6 @@
     }
 }
 
- 
-
 table {
     width: 100%;
     color: white;
@@ -14,10 +12,8 @@ table {
   
   .buscador {
     font-size: 18px;
-    /* width: 35%; */
   }
   .buscador input{
-      /* background-color: transparent; */
       color: white;
       border: 0;
       outline: none;
@@ -25,12 +21,20 @@ table {
       width: 100%;
   }  
 
-  @media(min-width: 486px) {
-    td, th {
-        width: 11.11%;
-      }
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+    color: white !important;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 
-  th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
-      color: white !important;
-  } 
+
+  @media (max-width: 767px){
+    .opciones{
+        display: flex;
+        justify-content: center;
+    }    
+}
+.opciones{        
+    width: 150px!important;
+    text-align: center;
+}
