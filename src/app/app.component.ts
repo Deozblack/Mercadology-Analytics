@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 
       if (hora == 9 && minuto == 0) {
         this.mensajeVencimiento(false);
-      } if (hora == 9 && minuto == 30 || hora == 13 && minuto == 20) {
+      } if (hora == 11 && minuto == 0) {
         this.mensajeVencimiento(true);
       }
 
@@ -47,10 +47,6 @@ export class AppComponent implements OnInit {
             // console.log("SE ENVIARA LA PETICION PROGRAMADA A LA HORA DEL BACKUP");
             this.backup();
           } 
-          // else {
-            // console.log(dia, "/", mes, "/", anio, "  ", hora, "-", minuto, "-", segundo);
-          // }
-
         }
 
       } else {
