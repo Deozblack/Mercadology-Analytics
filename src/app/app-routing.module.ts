@@ -11,12 +11,14 @@ import { RegistroComponent } from './components/usuarios/registro/registro.compo
 import { ModificarComponent } from './components/usuarios/modificar/modificar.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { PerfilComponent } from './components/usuarios/perfil/perfil.component';
+import { AccesosComponent } from './components/accesos/accesos.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RolGuard } from './guards/rol.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home' , component: HomeComponent,canActivate: [AuthGuard]},
+  {path: 'accesos' , component: AccesosComponent,canActivate: [AuthGuard]},
   {path: 'cuentas', component: CuentasComponent,canActivate: [AuthGuard]},
   {path: 'cuenta/:ids', component: CuentaComponent, canActivate: [AuthGuard, RolGuard]},
   {path: 'mostrar/:ids' , component: MostrarComponent,canActivate: [AuthGuard]},
