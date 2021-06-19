@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { map, delay } from 'rxjs/operators';
 import { ClienteModel } from '../models/cliente.model';
+import { AccesosModel } from '../models/accesos.model';
 
 @Injectable({
   providedIn: 'root'
@@ -552,6 +553,65 @@ export class AuthService {
 
     return this.http.put(`${this.urlDatos}/Usuario/${usuario.id}.json` + this.auth + token, usuarioTemp);
   }
+
+
+  agregarAccesos(acceso: AccesosModel, token: string) {
+    
+    let authData = {
+      ...acceso
+    };
+
+    return this.http.post(
+      `${this.urlDatos}/acceso.json` + this.auth + token,
+      authData
+    ).pipe(
+      map((resp: any) => {
+        // this.guardarToken(resp['idToken']);//vEREMOS PARA QUE SIRVE
+        //console.log(resp['idToken']);
+        console.log(resp);
+        console.log(acceso);
+        return acceso;
+      })
+    );
+  };/**Cierra el Registrar datos accesos**/
+
+
+   /**Hacer un get de todos los usuarios**/
+   getAccesos() {
+    return this.http.get(`${this.urlDatos}/acceso.json`)
+      .pipe(
+        map(this.crearArregloAcceso)
+      );
+  }
+
+  private crearArregloAcceso(accesoObj: object) {
+    const accesos: AccesosModel[] = [];
+    console.log(accesoObj);
+    
+    if (accesoObj === null) { return []; }
+
+    Object.keys(accesoObj).forEach(key => {
+      const acceso = accesoObj[key];
+      acceso.id = key;
+      accesos.push(acceso);
+    });
+    return accesos;
+  }
+
+  modificarAcceso(acceso: AccesosModel, token: string) {
+    
+    const AccesoTemp = {
+      ...acceso
+    };
+    delete AccesoTemp.id;
+
+    return this.http.put(`${this.url}/acceso/${acceso.id}.json` + this.auth + token, AccesoTemp);
+  }
+
+  eliminarAcceso(id: string, token: string) {
+    return this.http.delete(`${this.urlDatos}/acceso/${id}.json` + this.auth + token);
+  }
+
 
 
 }/**Cierra el export data**/
