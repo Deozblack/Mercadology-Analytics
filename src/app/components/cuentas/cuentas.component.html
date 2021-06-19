@@ -5,70 +5,6 @@
     </div>
 </div>
 
-<!-- <div class="container table-responsive">
-
-
-    <table *ngIf="!cargando && Cliente.length >0" class="table text-white  ">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Empresa</th>
-                <th scope="col">Dominio</th>
-                <th scope="col">Direccion IP</th>
-                <th scope="col">Estado</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let Cliente of Cliente; let i = index">
-                <td scope="row">{{ i + 1}}</td>
-                <td>{{Cliente.nomcli}}</td>
-                <td>{{Cliente.domcli}}</td>
-                <td>{{Cliente.dirip}}</td>
-                <td>
-                    <label *ngIf="Cliente.estado" class="green">Activo</label>
-                    <label *ngIf="!Cliente.estado" class="red">Inactivo</label>
-                </td>
-
-                <td class="" style="display: flex; justify-content: center;">
-
-                    <button class="btn btn-primary me-3" [routerLink]="['/mostrar', Cliente.ids ]">
-                        <i class="bi bi-info-circle-fill"></i>
-                    </button>
-
-                    <button class="btn btn-secondary me-3" [routerLink]="['/cuenta', Cliente.ids ]">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-
-                    <button class="btn btn-danger me-3" (click)="borrarClient( Cliente, i ) ">
-                        <i class="bi bi-trash-fill"></i>
-                    </button>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <div *ngIf="!cargando && Cliente.length === 0"
-        class="alert alert-warning text-center mt-3 animated fadeIn faster tablaCuentas">
-        <h4 class="alert-heading">No hay registros</h4>
-        <p>
-            <i class="fa fa-exclamation fa-2x"></i>
-        </p>
-    </div>
-
-    <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster tablaCuentas">
-        <h4 class="alert-heading">Cargando</h4>
-        <p>
-            <i class="fa fa-sync-alt fa-spin fa-2x"></i>
-        </p>
-        <p class="mb-0">
-            Espere por favor
-        </p>
-    </div>
-</div> -->
-
-
-
 <div class="container mt-2">
 
     <div class="row" style="justify-content: space-between;">
@@ -122,16 +58,16 @@
             <ng-container matColumnDef="ids">
                 <th mat-header-cell *matHeaderCellDef style="text-align: center; color: black !important;" > Opciones </th>
                 <!-- <td> {{element.ids}} </td> -->
-                <td mat-cell *matCellDef="let element; let i = index" style="display: flex;">
-                    <button class="btn btn-primary me-3" [routerLink]="['/mostrar', element.ids ]">
+                <td mat-cell *matCellDef="let element; let i = index" class="opciones" style="padding:0">
+                    <button class="btn btn-primary btn-sm" [routerLink]="['/mostrar', element.ids ]">
                         <i class="bi bi-info-circle-fill"></i>
                     </button>
 
-                    <button class="btn btn-secondary me-3" [routerLink]="['/cuenta', element.ids ]">
+                    <button class="btn btn-secondary ms-3 btn-sm" [routerLink]="['/cuenta', element.ids ]">
                         <i class="bi bi-pencil-square"></i>
                     </button>
 
-                    <button *ngIf="this.rol === '12345'" class="btn btn-danger me-3"
+                    <button *ngIf="this.rol === '12345'" class="btn btn-danger ms-3 btn-sm"
                         (click)="borrarClient( element, (i) + (paginator.pageIndex*paginator.pageSize) ) ">
                         <i class="bi bi-trash-fill"></i>
                     </button>
