@@ -52,8 +52,18 @@
 
         <div class="col-md-6 mb-3">
           <label for="formContrasena" class="mb-2">Contraseña</label>
-          <input type="password" class="form-control" name="contrasena" id="formContrasena" placeholder="Contraseña"
-            required formControlName="password">
+          <div class="input-group m-0 p-0">
+            <input *ngIf="!mostrarContrasena" type="password" class="form-control" name="contrasena" id="formContrasena"
+              placeholder="Contraseña" required formControlName="password">
+            <input *ngIf="mostrarContrasena" type="text" class="form-control" name="contrasena" id="formContrasena"
+              placeholder="Contraseña" required formControlName="password">
+
+            <button type="button" class="btn btn-light" (click)="mostrarContrasena = !mostrarContrasena">
+              <i *ngIf=mostrarContrasena class="bi bi-eye-fill"></i>
+              <i *ngIf=!mostrarContrasena class="bi bi-eye-slash-fill"></i>
+            </button>
+          </div>
+
           <span
             *ngIf="this.registroForm.controls['password'].invalid && this.registroForm.controls['password'].touched && this.registroForm.controls['password'].errors.required"
             class="fw-light text-danger" style="font-size:12px;">*Este campo es requerido</span>
@@ -67,18 +77,11 @@
         <div class="col-md-4 mb-3">
           <label for="formRol" class="mb-2"> Rol</label>
           <select class="form-select form-select-md mb-3" id="formRol" name="rol" formControlName="rol"
-            placeholder="Erick" aria-label=".form-select-md example">
-            <!-- <option selected disabled>Seleccione</option> -->
+           aria-label=".form-select-md example">
             <option>Administrador</option>
             <option>Editor</option>
             <option>Lector</option>
           </select>
-          <!-- <select class="form-select form-select-md mb-3 form-control" id="formRol" name="rol" aria-label=".form-select-lg example"> -->
-          <!-- <option selected disabled>Seleccione</option> -->
-          <!-- <option>Administrador</option>
-            <option>Editor</option>
-            <option>Lector</option>
-          </select> -->
         </div>
 
         <div class="col-md-4">

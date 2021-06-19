@@ -13,6 +13,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class PerfilComponent implements OnInit {
 
+  mostrarContrasena: boolean = false;
   idToken: string = sessionStorage.getItem('token');
   id: any;
   local: string; //Esta variable es para controlar la vista del menu , para que no se vea cuando se ve un perfil especifio desde le meenu de usuarios y asi en todas

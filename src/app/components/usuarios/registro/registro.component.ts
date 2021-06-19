@@ -15,6 +15,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class RegistroComponent implements OnInit {
   
+  mostrarContrasena: boolean = false;
   registroForm: FormGroup;
   registro: RegistroModel; //Registrar
   paso = false;

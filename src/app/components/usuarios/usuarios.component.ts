@@ -64,13 +64,8 @@ export class UsuariosComponent implements OnInit {
           text: 'Espere por favor...'
         });
         Swal.showLoading();
-        // this.usuarios.splice(i, 1);
         this.dataSource.data.splice(this.dataSource.data.indexOf(usuario), 1);
-
-        //    console.log(sessionStorage.getItem('idToken'));
-        /**Elimina el usuario actual mediante su token, pero no se puede obtener aun eso**/
-        //this.usuarioService.eliminarUsuarioAuth( usuario.idTok ).subscribe();
-        
+      
         usuario.password = CryptoJS.AES.decrypt(usuario.password, 'Administrador').toString(CryptoJS.enc.Utf8);
         this.dataSource = new MatTableDataSource(this.usuarios);
         this.dataSource.paginator = this.paginator;

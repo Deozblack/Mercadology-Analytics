@@ -17,6 +17,7 @@ export class ModificarComponent implements OnInit {
   idToken: string;
   admin: string;
 
+  mostrarContrasena: boolean = false;
   cambiarContrasenaForm: FormGroup;
   cambiarEmailForm: FormGroup;
 
