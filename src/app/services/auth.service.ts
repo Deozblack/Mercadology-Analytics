@@ -478,8 +478,6 @@ export class AuthService {
   //Iniciar sesion con un usuario x mediante el admin
   iniciarSesionCambiarContrasenaOEmail(correo: string, password: string, passwordOEmailNuevo: string, CE: string) {
 
-    console.log(correo, password, passwordOEmailNuevo);
-
     const authData = {
       email: correo,
       password: password,
@@ -534,7 +532,7 @@ export class AuthService {
     return this.http.post(this.EmailOPass, body);
   }
 
-  //Estoy mal en elid me genera un nuevo usuario
+
   adminActualizarUsuario(usuario: any, password: string, token: string) {
 
     const usuarioTemp = {
@@ -555,6 +553,7 @@ export class AuthService {
   }
 
 
+  /**Agrega a accesos**/
   agregarAccesos(acceso: AccesosModel, token: string) {
     
     let authData = {
@@ -566,10 +565,6 @@ export class AuthService {
       authData
     ).pipe(
       map((resp: any) => {
-        // this.guardarToken(resp['idToken']);//vEREMOS PARA QUE SIRVE
-        //console.log(resp['idToken']);
-        console.log(resp);
-        console.log(acceso);
         return acceso;
       })
     );
@@ -586,7 +581,6 @@ export class AuthService {
 
   private crearArregloAcceso(accesoObj: object) {
     const accesos: AccesosModel[] = [];
-    console.log(accesoObj);
     
     if (accesoObj === null) { return []; }
 

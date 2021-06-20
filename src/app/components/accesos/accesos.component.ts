@@ -83,7 +83,7 @@ export class AccesosComponent implements OnInit {
     }
 
     this.agregarModel = this.agregarForm.value;
-    console.log(this.agregarModel);
+    // console.log(this.agregarModel);
     Swal.fire({
       allowOutsideClick: false,
       icon: 'info',
@@ -248,7 +248,7 @@ export class AccesosComponent implements OnInit {
           });
         } else if (tipo === 'update') {
           this.auth.modificarAcceso(acceso, sessionStorage.getItem('token')).subscribe(resp => {
-            console.log(resp);
+            // console.log(resp);
             Swal.fire({
               title: 'Actualizado',
               text: 'Se actualizaron correctamente los datos',

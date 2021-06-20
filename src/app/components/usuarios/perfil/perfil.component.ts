@@ -196,14 +196,14 @@ export class PerfilComponent implements OnInit {
     );
   }//Termina el submit*/
 
-  /**Cambiar email**/
+  /**Cambiar email, no se usa, pero si se requiere, se activa**/
   cambiarEmail() {
-    console.log(this.cambiarEmailForm);
+    // console.log(this.cambiarEmailForm);
 
     if (this.cambiarEmailForm.valid) {
 
       const email = this.cambiarEmailForm.value.nuevoEmail;
-      console.log(this.cambiarEmailForm.value.nuevoEmail);
+      // console.log(this.cambiarEmailForm.value.nuevoEmail);
 
       Swal.fire({
         title: '¿Esta seguro?',
@@ -248,7 +248,6 @@ export class PerfilComponent implements OnInit {
             const tokenVencido = err.error.error.message;
 
             if (tokenVencido === "Auth token is expired" || tokenVencido === "TOKEN_EXPIRED") {
-              console.log("!1111111111");
               
               // console.log("Entro a la comparativa de permiso denegado");
               const refresh = sessionStorage.getItem('refresh_token');
@@ -276,7 +275,6 @@ export class PerfilComponent implements OnInit {
 
                 }, (err) => {
                   if (err.error.error.message === 'CREDENTIAL_TOO_OLD_LOGIN_AGAIN' || tokenVencido === 'INVALID_ID_TOKEN') {
-                    console.log("!eeeee");
                     Swal.fire({
                       icon: 'warning',
                       title: 'Su sesión inicial ha caducado',
@@ -303,7 +301,6 @@ export class PerfilComponent implements OnInit {
                   text: 'Inicie sesión nuevamente para poder cambiar su email'
                 })
               } else {
-                console.log("leggad aqui");
 
                 Swal.fire({
                   icon: 'error',
@@ -333,7 +330,6 @@ export class PerfilComponent implements OnInit {
 
 
   cambiarContrasena(): void {
-    console.log(this.cambiarContrasenaForm);
 
     if (this.cambiarContrasenaForm.valid) {
 

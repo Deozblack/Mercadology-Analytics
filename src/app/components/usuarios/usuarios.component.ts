@@ -42,7 +42,7 @@ export class UsuariosComponent implements OnInit {
         this.dataSource.sort = this.sort;
 
       }, (err) => {
-        console.log(err);
+        // console.log(err);
       }
       );
 
@@ -74,7 +74,7 @@ export class UsuariosComponent implements OnInit {
           // console.log(resp);
           
           this.usuarioService.eliminarUsuario(usuario.id).subscribe(resp => {
-            console.log(resp);
+            // console.log(resp);
             Swal.close();
             Swal.fire({
               title: 'Eliminado',
@@ -87,10 +87,10 @@ export class UsuariosComponent implements OnInit {
           } ); //LO COMENTO EN PRUEBAS
 
         }, (error) => {
-          console.log(error);
+          // console.log(error);
           
         }, () => {
-          console.log("se compelto la eliminariconnnn");
+          // console.log("se compelto la eliminariconnnn");
         });
 
       }
