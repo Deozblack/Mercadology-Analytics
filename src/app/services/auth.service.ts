@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { map, delay } from 'rxjs/operators';
 import { ClienteModel } from '../models/cliente.model';
 import { AccesosModel } from '../models/accesos.model';
+import { ComunicadoModel } from '../models/comunicado.model';
 
 @Injectable({
   providedIn: 'root'
@@ -606,6 +607,21 @@ export class AuthService {
     return this.http.delete(`${this.urlDatos}/acceso/${id}.json` + this.auth + token);
   }
 
+  
+
+  /** Agregar comunicados **/
+  agregarComunicado(token:string, comunicado:ComunicadoModel){
+    
+    let comunicadoDatos = {
+      ...comunicado
+    };
+
+    return this.http.post(`${this.urlDatos}/comunicados.json` + this.auth + token, comunicadoDatos);
+  }
+
+  eliminarComunicado(id: string, token: string) {
+    return this.http.delete(`${this.urlDatos}/comunicados/${id}.json` + this.auth + token);
+  }
 
 
 }/**Cierra el export data**/
