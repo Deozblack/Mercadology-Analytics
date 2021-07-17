@@ -619,6 +619,40 @@ export class AuthService {
     return this.http.post(`${this.urlDatos}/comunicados.json` + this.auth + token, comunicadoDatos);
   }
 
+  getComunicado(id: string) {
+    return this.http.get(`${this.urlDatos}/comunicados/${id}.json`);
+  }
+
+  getComunicados() {
+    return this.http.get(`${this.urlDatos}/comunicados.json`)
+      .pipe(
+        map(this.crearArregloComunicado)
+      );
+  }
+
+  private crearArregloComunicado(comunicadoObj: object) {
+    const comunicado: ComunicadoModel[] = [];
+    
+    if (comunicadoObj === null) { return []; }
+
+    Object.keys(comunicadoObj).forEach(key => {
+      const comunicado = comunicadoObj[key];
+      comunicado.id = key;
+      comunicado.push(comunicado);
+    });
+    return comunicado;
+  }
+
+  modificarComunicado(comunicado: ComunicadoModel, token: string) {
+    
+    const ComunicadoTemp = {
+      ...comunicado
+    };
+    delete ComunicadoTemp.id;
+
+    return this.http.put(`${this.url}/comunicados/${comunicado.id}.json` + this.auth + token, ComunicadoTemp);
+  }
+
   eliminarComunicado(id: string, token: string) {
     return this.http.delete(`${this.urlDatos}/comunicados/${id}.json` + this.auth + token);
   }
