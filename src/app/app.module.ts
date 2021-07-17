@@ -30,6 +30,7 @@ import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { HomeComponent } from './components/home/home.component';
 import { MostrarComponent } from './components/mostrar/mostrar.component';
 import { AccesosComponent } from './components/accesos/accesos.component';
+import { ComunicadosComponent } from './components/comunicados/comunicados.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AccesosComponent } from './components/accesos/accesos.component';
     CuentaComponent,
     PerfilComponent,
     MostrarComponent,
-    AccesosComponent
+    AccesosComponent,
+    ComunicadosComponent
   ],
   imports: [
     MatTabsModule,
