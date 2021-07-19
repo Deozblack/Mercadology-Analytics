@@ -54,3 +54,19 @@
     width: 150px;
     height: 150px;
 }
+
+.eliminar {
+    background-color: #FC041C;
+}
+
+.actualizar {
+    background-color: #646464;
+}
+
+.btn-cs {
+    width: 8%;
+    float: right;
+    color: #fff;
+    margin-left: 10px;
+    margin-top: 10px;
+}
