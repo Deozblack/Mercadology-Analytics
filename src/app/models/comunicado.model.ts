@@ -4,4 +4,7 @@ export class ComunicadoModel{
     fecha:string;
     descripcion:string;
     archivo:any;
+    autor: string;
+    foto: any;
+    idAutor: string;
 }
