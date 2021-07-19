@@ -631,16 +631,16 @@ export class AuthService {
   }
 
   private crearArregloComunicado(comunicadoObj: object) {
-    const comunicado: ComunicadoModel[] = [];
+    const comunicados: ComunicadoModel[] = [];
     
     if (comunicadoObj === null) { return []; }
 
     Object.keys(comunicadoObj).forEach(key => {
       const comunicado = comunicadoObj[key];
       comunicado.id = key;
-      comunicado.push(comunicado);
+      comunicados.push(comunicado);
     });
-    return comunicado;
+    return comunicados;
   }
 
   modificarComunicado(comunicado: ComunicadoModel, token: string) {
